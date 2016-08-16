@@ -1,0 +1,36 @@
+{
+  "name": "nodesec-ideabox",
+  "version": "1.0.0",
+  "description": "A nodejs backend idea toolbox. Authentication, authorization, REST API, session handling, payment management, 2FA, more...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jim-y/nodesec-ideabox.git"
+  },
+  "keywords": [
+    "node",
+    "authentication",
+    "authorization",
+    "security",
+    "rest",
+    "api",
+    "session",
+    "2fa",
+    "koa",
+    "mongodb",
+    "bcrypt",
+    "hash"
+  ],
+  "author": "Jim-Y",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jim-y/nodesec-ideabox/issues"
+  },
+  "homepage": "https://github.com/jim-y/nodesec-ideabox#readme",
+  "dependencies": {
+    "koa": "^1.2.1"
+  }
+}
