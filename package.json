@@ -4,7 +4,8 @@
   "description": "A nodejs backend idea toolbox. Authentication, authorization, REST API, session handling, payment management, 2FA, more...",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./scripts/test.sh",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,10 @@
   },
   "homepage": "https://github.com/jim-y/nodesec-ideabox#readme",
   "dependencies": {
-    "koa": "^1.2.1"
+    "koa": "^1.2.1",
+    "koa-bodyparser": "^2.2.0",
+    "koa-compress": "^1.0.9",
+    "koa-helmet": "^2.0.0",
+    "koa-router": "^5.4.0"
   }
 }

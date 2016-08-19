@@ -1,28 +1,24 @@
-var koa = require('koa');
-var app = koa();
+const koa = require('koa');
+const helmet = require('koa-helmet');
+const compress = require('koa-compress');
+const bodyParser = require('koa-bodyparser');
+const app = module.exports = koa();
+const routes = require('./app/routes');
+const xResponseTime = require('./app/middlewares/x-response-time');
+const logger = require('./app/middlewares/logger');
 
 // x-response-time
-
-app.use(function *(next){
-  var start = new Date;
-  yield next;
-  var ms = new Date - start;
-  this.set('X-Response-Time', ms + 'ms');
-});
+app.use(xResponseTime);
 
 // logger
+app.use(logger);
 
-app.use(function *(next){
-  var start = new Date;
-  yield next;
-  var ms = new Date - start;
-  console.log('%s %s - %s', this.method, this.url, ms);
-});
+// middlewares
+app.use(bodyParser());
+app.use(compress());
+app.use(helmet());
 
-// response
-
-app.use(function *(){
-  this.body = 'Hello World';
-});
+// routes
+routes(app);
 
 app.listen(3000);
