@@ -2,10 +2,11 @@ const koa = require('koa');
 const helmet = require('koa-helmet');
 const compress = require('koa-compress');
 const bodyParser = require('koa-bodyparser');
-const app = module.exports = koa();
 const routes = require('./app/routes');
 const xResponseTime = require('./app/middlewares/x-response-time');
 const logger = require('./app/middlewares/logger');
+
+const app = module.exports = koa();
 
 // x-response-time
 app.use(xResponseTime);
@@ -16,7 +17,7 @@ app.use(logger);
 // middlewares
 app.use(bodyParser());
 app.use(compress());
-app.use(helmet());
+//app.use(helmet());
 
 // routes
 routes(app);

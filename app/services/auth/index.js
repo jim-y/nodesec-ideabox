@@ -1,28 +1,29 @@
 'use strict';
 
-const router = require('koa-router')({ prefix: '/user' });
-const secret = require('../../config/secret');
-const jwt = require('koa-jwt');
+const router = require('koa-router')({ prefix: '/auth' });
 
 // SERVICES
-const userService = require('./user-service').instance({});
+const authService = require('./auth-service').instance({});
 
 // CONTROLLERS
-const controller = require('./user-controller').instance({
-  userService
+const controller = require('./auth-controller').instance({
+  authService
 });
 
 // ROUTES
 const routes = [{
-  path: '/',
-  method: 'GET',
-  action: 'getUsers'
+  path: '/register',
+  method: 'POST',
+  action: 'register'
+}, {
+  path: '/authenticate',
+  method: 'POST',
+  action: 'authenticate'
 }];
 
 module.exports = (app) => {
   routes.forEach(route => {
     const middlewares = [];
-
     // additional middlewares
     // --- security, etc
 
@@ -33,7 +34,6 @@ module.exports = (app) => {
     router[route.method.toLowerCase()](route.path, ...middlewares);
   });
 
-  app.use(jwt({ secret }));
   app.use(router.routes());
   app.use(router.allowedMethods());
 };

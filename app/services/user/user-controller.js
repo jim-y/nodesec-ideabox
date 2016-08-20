@@ -7,6 +7,8 @@ class UserController {
   }
 
   * getUsers(ctx) {
+    const user = ctx.state.user;
+    console.log(user);
     ctx.body = yield this.userService.getUsers();
   }
 
