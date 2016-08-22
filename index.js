@@ -1,5 +1,6 @@
 const koa = require('koa');
 const helmet = require('koa-helmet');
+const cors = cors = require('koa-cors');
 const compress = require('koa-compress');
 const bodyParser = require('koa-bodyparser');
 const routes = require('./app/routes');
@@ -15,6 +16,7 @@ app.use(xResponseTime);
 app.use(logger);
 
 // middlewares
+app.use(cors());
 app.use(bodyParser());
 app.use(compress());
 //app.use(helmet());

@@ -5,7 +5,7 @@ const jwt = require('koa-jwt');
 class AuthService {
 
   authenticate(username, password) {
-    if (username !== 'john' || password !== 'doe') {
+    if (username !== 'john@doe.com' || password !== 'Password11') {
       throw new Error('invalid-credetials');
     }
 
