@@ -19,4 +19,11 @@ export default function routes($stateProvider, $urlRouterProvider) {
     controller: 'AuthController as user',
     //security: SKIP_IF_AUTHENTICATED
   });
+
+  $stateProvider.state('register', {
+    url: '/register',
+    templateUrl: 'static/register.html',
+    controller: 'AuthController as user',
+    //security: SKIP_IF_AUTHENTICATED
+  });
 }

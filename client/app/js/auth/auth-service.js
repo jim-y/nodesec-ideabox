@@ -12,17 +12,28 @@ export default class AuthService {
     this.userService = userService;
   }
 
-  login(email, password) {
+  login(login) {
     return this.$http
-      .post('http://localhost:3000/auth/authenticate', { username: email, password })
+      .post('http://localhost:3000/auth/authenticate', login)
       .then(r => r.data)
       .then(payload => {
         if (payload != null) {
-          this.userService.user = {
-            username: email
-          };
+          this.userService.user = payload.user;
         }
+        
         this.$state.go('home');
       });
+  }
+
+  register(registration) {
+    console.log('register');
+    return this.$http
+      .post('http://localhost:3000/auth/register', registration)
+      .then(r => r.data)
+      .then(response => {
+        if (response != null) {
+          this.$state.go('login');
+        }
+      })
   }
 }

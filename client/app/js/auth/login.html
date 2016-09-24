@@ -1,16 +1,20 @@
 <div layout="column" flex id="content" role="main">
   <md-content layout="vertical" flex id="content">
-    <form name="user.form" layout="row" layout-align="center center" layout-fill>
+    <form name="user.loginform" layout="row" layout-align="center center" layout-fill>
       <md-whiteframe class="md-whiteframe-z1" layout="column" flex="30" layout-padding>
         <md-content>
+
+          <!-- EMAIL -->
           <md-input-container>
             <label>Email</label>
             <input name="email" ng-model="user.email" type="text" ng-pattern="/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/" required>
-            <div ng-messages="user.form.email.$error">
+            <div ng-messages="user.loginform.email.$error">
               <div ng-message="required">Name is required.</div>
               <div ng-message="pattern">The username has to be an email.</div>
             </div>
           </md-input-container>
+
+          <!-- PASSWORD -->
           <md-input-container>
             <label>Password</label>
             <input name="password"
@@ -20,19 +24,26 @@
               maxlength="120"
               pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{10,120}$"
               required>
-            <div ng-messages="user.form.password.$error">
+            <div ng-messages="user.loginform.password.$error">
               <div ng-message="required">Password is required.</div>
               <div ng-message="minlength">Your password needs to be at least 10 characters long.</div>
               <div ng-message="maxlength">Your password's length can't exceed 120 characters.</div>
               <div ng-message="pattern">Your password must comply to the rules.</div>
             </div>
           </md-input-container>
+
+          <!-- ACTIONS -->
           <md-input-container layout-align="center center">
             <div layout="row" layout-sm="column" layout-margin>
               <md-button class="md-raised md-primary login"
                 flex="100"
                 ng-click="user.login($event)"
-                ng-disabled="user.form.$invalid">Login</md-button>
+                ng-disabled="user.loginform.$invalid">Login</md-button>
+            </div>
+            <div layout="row" layout-sm="column" layout-margin>
+              <md-button class="md-raised md-primary register"
+                flex="100"
+                ng-click="user.$state.go('register')">Register</md-button>
             </div>
           </md-input-container>
         </md-content>
