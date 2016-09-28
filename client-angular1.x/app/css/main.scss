@@ -1,0 +1,62 @@
+div.players {
+
+  padding-left: 15px;
+  padding-right: 15px;
+
+  // ===================
+  //    SEARCH-PLAYER
+  // ===================
+  header.search-player {
+
+    .player-battletag {
+
+      .md-input {
+        border-color: white;
+      }
+
+      .md-input,
+      label {
+        color: white;
+      }
+
+      .validation {
+        & > div {
+          color: #E57373;
+        }
+      }
+    }
+
+    .player-preview {
+      width: 100%;
+
+      // .ng-hide-remove {
+      //   animation: 0.5s flipInX ease;
+      // }
+    }
+
+  }
+
+  // ===================
+  //    PLAYER-LIST
+  // ===================
+  md-content.player-list {
+    md-card.player-info {
+      width: 100%;
+      max-width: 300px;
+
+      .player-wl {
+        color: lightslategrey;
+      }
+
+      & > md-card-title {
+        & > md-card-title-media {
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+md-progress-circular.md-hue-2 path {
+    stroke: rgb(249,168,37);
+}
