@@ -23,7 +23,7 @@ indent_size = 4
 indent_style = tab
 
 # Indentation override for all JS under lib directory
-[api/**.js]
+[{client-angular2/**/*.{js,ts},client-angular1.x/**/*.{js,html},app/**/*.js}]
 indent_style = space
 indent_size = 2
 

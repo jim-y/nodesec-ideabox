@@ -1,22 +1,13 @@
-div.players {
-  padding-left: 15px;
-  padding-right: 15px; }
-  div.players header.search-player .player-battletag .md-input {
-    border-color: white; }
-  div.players header.search-player .player-battletag .md-input,
-  div.players header.search-player .player-battletag label {
-    color: white; }
-  div.players header.search-player .player-battletag .validation > div {
-    color: #E57373; }
-  div.players header.search-player .player-preview {
-    width: 100%; }
-  div.players md-content.player-list md-card.player-info {
-    width: 100%;
-    max-width: 300px; }
-    div.players md-content.player-list md-card.player-info .player-wl {
-      color: lightslategrey; }
-    div.players md-content.player-list md-card.player-info > md-card-title > md-card-title-media {
-      padding-left: 10px; }
+.masterView {
+  height: 100%; }
 
-md-progress-circular.md-hue-2 path {
-  stroke: #f9a825; }
+.loginBox {
+  max-width: 90%;
+  width: 300px; }
+
+.stretch input {
+  width: 100%; }
+
+.registerBox {
+  max-width: 90%;
+  width: 300px; }

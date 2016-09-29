@@ -1,0 +1,36 @@
+<div layout="column" >
+
+  <!-- Container #1 (see wireframe) -->
+  <md-toolbar layout="row" class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="appCtrl.toggleNav()">
+      <i class="material-icons">menu</i>
+    </md-button>
+    <h1>Angular Material - Starter App</h1>
+    <div flex></div>
+    <md-button aria-label="Go Back" ng-click="appCtrl.logout()">
+      Logout
+    </md-button>
+  </md-toolbar>
+
+  <!-- Container #2 -->
+  <div flex layout="row">
+
+    <!-- Container #3 -->
+    <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp">
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <md-button aria-label="Go Back" ng-click="appCtrl.toggleNav()">
+            Go Back
+          </md-button>
+        </div>
+      </md-toolbar>
+    </md-sidenav>
+
+    <!-- Container #4 -->
+    <md-content flex id="content">
+      <section ui-view></section>
+    </md-content>
+
+  </div>
+
+</div>

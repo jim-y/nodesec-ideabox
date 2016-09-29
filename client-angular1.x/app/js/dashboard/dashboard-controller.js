@@ -3,20 +3,23 @@
  */
 'use strict';
 
-class DashboardController {
+export default class DashboardController {
 
   static get $inject() {
-    return ['$mdSidenav'];
+    return ['DashboardService'];
   }
 
-  constructor($mdSidenav) {
-    this.$mdSidenav = $mdSidenav;
+  constructor(dashboardService) {
+    this.dashboardService = dashboardService;
+    this.users = [];
   }
 
-  open() {
-    this.$mdSidenav('left').open();
+  getUsers() {
+    this.dashboardService
+      .getUsers()
+      .then(users => {
+        this.users = users;
+      });
   }
 
 }
-
-export default DashboardController;

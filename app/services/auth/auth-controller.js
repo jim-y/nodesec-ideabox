@@ -7,19 +7,19 @@ class AuthController {
   }
 
   * register(ctx) {
-    const email = ctx.request.body.email;
+    const email = ctx.request.body.username;
     const password = ctx.request.body.password;
-    const confirm = ctx.request.body.confirm;
+    //const confirm = ctx.request.body.confirm;
 
     try {
-      ctx.body = yield this.authService.register(email, password, confirm);
+      ctx.body = yield this.authService.register(email, password);
     } catch (err) {
       ctx.throw(err, 403);
     }
   }
 
   * authenticate(ctx) {
-    const email = ctx.request.body.email;
+    const email = ctx.request.body.username;
     const password = ctx.request.body.password;
 
     try {

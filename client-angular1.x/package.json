@@ -9,12 +9,14 @@
     "dist": "mkdir -p dist/js/vendor dist/css",
     "create-vendor": "concat-cli -f node_modules/angular/angular.min.js node_modules/angular-ui-router/release/angular-ui-router.min.js -o dist/js/vendor/vendor.js",
     "copy-static": "cp app/index.html dist/index.html && ./scripts/copy-markup.sh",
+    "copy-static:watch": "onchange 'app/**/*.html' -- npm run copy-static",
     "copy-images": "cp -R app/img dist/img",
     "build:scss": "node-sass app/css/main.scss dist/css/main.css",
+    "build:scss:watch": "node-sass app/css/main.scss -w dist/css/main.css",
     "build:js": "watchify -v -d -e app/js/app.js -t [ babelify --presets [ es2015 ] --comments false ] -o dist/js/app.js",
     "build": "npm run clean-dist && npm run dist && npm run build:scss && npm run copy-static && npm run create-vendor && npm run build:js",
     "serve": "pushd ./dist; python -m SimpleHTTPServer 8000; popd",
-    "watch": "npm-watch"
+    "watch": "parallelshell 'npm run copy-static:watch' 'npm run build:scss:watch'"
   },
   "author": "Jim-Y",
   "license": "Apache-2.0",
@@ -32,25 +34,14 @@
     "eslint-plugin-react": "^5.2.2",
     "node-sass": "^3.8.0",
     "npm-watch": "^0.1.5",
+    "onchange": "^3.0.2",
+    "parallelshell": "^2.0.0",
     "rimraf": "^2.5.4",
+    "watch": "^0.19.2",
     "watchify": "^3.7.0"
   },
   "dependencies": {
     "angular": "^1.5.7",
     "angular-ui-router": "^0.3.1"
-  },
-  "watch": {
-    "copy-static": {
-      "patterns": [
-        "app"
-      ],
-      "extensions": "html"
-    },
-    "build:scss": {
-      "patterns": [
-        "app/css"
-      ],
-      "extensions": "scss"
-    }
   }
 }

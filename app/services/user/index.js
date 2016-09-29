@@ -14,7 +14,7 @@ const controller = require('./user-controller').instance({
 
 // ROUTES
 const routes = [{
-  path: '/',
+  path: '/users',
   method: 'GET',
   action: 'getUsers'
 }];

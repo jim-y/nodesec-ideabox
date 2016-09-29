@@ -5,8 +5,21 @@
 
 export default class AppController {
 
-    constructor() {
+  static get $inject() {
+    return ['$mdSidenav', 'AuthService'];
+  }
 
-    }
+  constructor($mdSidenav, authService) {
+    this.$mdSidenav = $mdSidenav;
+    this.authService = authService;
+  }
+
+  toggleNav() {
+    this.$mdSidenav('left').toggle();
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 
 }

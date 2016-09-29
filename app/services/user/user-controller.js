@@ -8,7 +8,7 @@ class UserController {
 
   * getUsers(ctx) {
     const user = ctx.state.user;
-    console.log(user);
+    console.log('User from jwt: ', user);
     ctx.body = yield this.userService.getUsers();
   }
 

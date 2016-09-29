@@ -3,12 +3,21 @@
  */
 'use strict';
 
-class DashboardService {
+export default class DashboardService {
 
-    constructor() {
+  static get $inject() {
+    return ['$http'];
+  }
 
-    }
+  constructor($http) {
+    this.$http = $http;
+  }
+
+  getUsers() {
+    return this.$http
+      .get('http://localhost:3000/user/users')
+      .then(r => r.data);
+  }
 
 }
 
-export default DashboardService;
