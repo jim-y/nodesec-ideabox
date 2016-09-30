@@ -42,11 +42,10 @@ export default class AuthService {
     this.$state.go('login');
   }
 
-  register(username, password) {
-    return this.$http.post('http://localhost:3000/auth/register', {
-      username,
-      password
-    }).then(r => r.data);
+  register(username, password, confirm) {
+    return this.$http
+      .post('http://localhost:3000/auth/register', { username, password, confirm })
+      .then(r => r.data);
   }
 
 }

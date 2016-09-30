@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/jim-y/nodesec-ideabox#readme",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "co": "^4.6.0",
     "firebase": "^3.4.1",
     "koa": "^1.2.1",

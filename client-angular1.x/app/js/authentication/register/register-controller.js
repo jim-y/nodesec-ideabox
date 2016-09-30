@@ -15,12 +15,14 @@ export default class RegisterController {
 
     this.username = '';
     this.password = '';
+    this.confirm = '';
   }
 
   register() {
     this.authService
-      .register(this.username, this.password)
-      .then(() => this.$state.go('login'));
+      .register(this.username, this.password, this.confirm)
+      .then(() => this.$state.go('login'))
+      .catch(err => console.error(err));
   }
 
 }

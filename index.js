@@ -6,7 +6,6 @@ const bodyParser = require('koa-bodyparser');
 const routes = require('./app/routes');
 const xResponseTime = require('./app/middlewares/x-response-time');
 const logger = require('./app/middlewares/logger');
-//const db = require('./app/config/db');
 
 const app = module.exports = koa();
 

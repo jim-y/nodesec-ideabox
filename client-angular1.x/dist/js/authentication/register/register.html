@@ -17,6 +17,11 @@
         <input type="password" ng-model="ctrl.password"/>
       </md-input-container>
 
+      <md-input-container>
+        <label>Confirm Password</label>
+        <input type="password" ng-model="ctrl.confirm"/>
+      </md-input-container>
+
       <div layout="row" layout-align="end center" style="padding-top:20px;">
         <md-button class="md-raised md-primary" ng-click="ctrl.register(ctrl.username, ctrl.password)">
           Register

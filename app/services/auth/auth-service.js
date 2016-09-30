@@ -2,7 +2,7 @@
 
 const co = require('co');
 const jwt = require('koa-jwt');
-const User = require('../../models/user');
+const User = require('../../models/user').instance;
 const secret = require('../../config/secret');
 
 class AuthService {
@@ -12,33 +12,21 @@ class AuthService {
   }
 
   authenticate(username, password) {
-    console.log(users);
-    console.log(username, password);
-    const pwd = users[username];
+    return co(function* () {
+      const user = yield User.findOne(username);
 
-    if (pwd == null || pwd !== password) {
-      throw new Error('invalid credentials');
-    }
+      if (user == null) throw new Error('Invalid credentials');
 
-    return {
-      token: jwt.sign({ user: username, password }, secret, { expiresIn: 18000 })
-    };
-    // return co(function* () {
-    //   // const user = yield User.findOne({
-    //   //   email: username,
-    //   //   password
-    //   // });
-    //
-    //   const pwd = users[username];
-    //
-    //   if (pwd == null || pwd !== password) {
-    //     throw new Error('invalid credentials');
-    //   }
-    //
-    //   return {
-    //     token: jwt.sign({ user: username, password }, 'jwt-secret', { expiresIn: 18000 })
-    //   };
-    // });
+      try {
+        yield User.verify(user, password);
+      } catch (err) {
+        throw new Error('Invalid credentials');
+      }
+
+      return {
+        token: jwt.sign(user, secret, { expiresIn: 18000 })
+      };
+    });
   }
 
   static instance(options) {

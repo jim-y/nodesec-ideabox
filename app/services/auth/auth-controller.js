@@ -9,11 +9,16 @@ class AuthController {
   * register(ctx) {
     const email = ctx.request.body.username;
     const password = ctx.request.body.password;
-    //const confirm = ctx.request.body.confirm;
+    const confirm = ctx.request.body.confirm;
+
+    if (confirm !== password) ctx.throw('Invalid Credentials', 403);
 
     try {
       ctx.body = yield this.authService.register(email, password);
     } catch (err) {
+      if (err) {
+        console.error(err);
+      }
       ctx.throw(err, 403);
     }
   }
@@ -25,6 +30,9 @@ class AuthController {
     try {
       ctx.body = yield this.authService.authenticate(email, password);
     } catch (err) {
+      if (err) {
+        console.error(err.message);
+      }
       ctx.throw(err, 403);
     }
   }
